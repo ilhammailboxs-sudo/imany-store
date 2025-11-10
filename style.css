@@ -1,0 +1,60 @@
+/* Save Custom CSS in 'style.css' file */
+
+body {
+    background-color: #f4f7f6;
+}
+
+/* Product Card Styling */
+.product-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+    height: 100%; 
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.btn-add-to-cart {
+    background-color: #ff5722; /* Attractive Orange/Red */
+    border-color: #ff5722;
+    font-weight: bold;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #e64a19;
+    border-color: #e64a19;
+}
+
+/* Quantity Input Styling */
+.quantity-container {
+    padding-top: 5px;
+}
+
+.quantity-input {
+    width: 60px !important; 
+    text-align: center;
+    padding: .25rem .5rem;
+    font-size: .9rem;
+}
+
+/* ===================================
+   CHECKOUT PAGE STYLES
+   =================================== */
+
+.card.shadow-lg {
+    border-radius: 15px;
+}
+
+#cartSummary ul {
+    margin-bottom: 0;
+}

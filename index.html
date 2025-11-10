@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Store | Product Catalog</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Imany Store</a>
+            <div class="ms-auto">
+                <button class="btn btn-danger me-2" id="clearCartBtn">
+                    🗑️ Clear Cart
+                </button>
+                
+                <button class="btn btn-warning" id="viewCartBtn">
+                    Cart (<span id="cartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-5">🔥 Shop Now 🔥</h1>
+        
+        <div class="row" id="productContainer">
+            </div>
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="mb-0 small text-muted">&copy; 2025 E-Commerce Demo.</p>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

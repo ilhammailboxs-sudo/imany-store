@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Pending</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Imany Store</a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg p-5 text-center">
+                    <h1 class="text-warning mb-3">🕒 Order Pending (Verification)</h1>
+                    <p class="lead mb-4">Your order has been placed. We will confirm your order details after verifying the payment receipt.</p>
+                    
+                    <div id="orderDetailsSummary" class="text-start bg-light p-3 rounded mb-4">
+                        </div>
+
+                    <div id="receiptPreviewSection" class="text-center mb-4 p-3 border rounded">
+                        <p class="mb-2"><strong>Uploaded Payment Receipt:</strong></p>
+                        <img id="confirmedReceiptPreview" src="#" alt="Receipt Preview" class="img-thumbnail" style="max-width: 250px; max-height: 250px; display: none;">
+                        <p class="small text-muted mt-2">*(Note: This image cannot be sent via the WhatsApp button below. Please manually share the image with the store if requested.)*</p>
+                    </div>
+
+
+                    <button id="sendWhatsappBtn" class="btn btn-success btn-lg mt-3">
+                        📲 Send Order Details to Store (via WhatsApp)
+                    </button>
+                    
+                    <a href="index.html" class="btn btn-warning btn-lg mt-3">
+                        Continue Shopping 🛍️
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderDetails = JSON.parse(localStorage.getItem('pendingOrderDetails'));
+            const summaryDiv = document.getElementById('orderDetailsSummary');
+            const whatsappBtn = document.getElementById('sendWhatsappBtn');
+            const receiptPreview = document.getElementById('confirmedReceiptPreview');
+            
+            if (!orderDetails) {
+                summaryDiv.innerHTML = '<p class="text-danger">Order Details not found. Please place a new order.</p>';
+                whatsappBtn.style.display = 'none';
+                return;
+            }
+
+            // Display Order Summary
+            summaryDiv.innerHTML = `
+                <p><strong>Order ID:</strong> ${orderDetails.orderId}</p>
+                <p><strong>Total:</strong> ${orderDetails.totalText}</p>
+                <p><strong>Name:</strong> ${orderDetails.name}</p>
+                <p><strong>Phone:</strong> ${orderDetails.phone}</p>
+                <p><strong>Address:</strong> ${orderDetails.address}, ${orderDetails.district}, ${orderDetails.province}</p>
+                <p><strong>Notes:</strong> ${orderDetails.notes || 'None'}</p>
+                <p class="mt-3"><strong>Items:</strong></p>
+                <ul>
+                    ${orderDetails.items.map(item => `<li>${item.name} (x${item.quantity}) - LKR ${(item.price * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2 })}</li>`).join('')}
+                </ul>
+            `;
+            
+            // Display Receipt Preview
+            if (orderDetails.receiptImageBase64) {
+                receiptPreview.src = orderDetails.receiptImageBase64;
+                receiptPreview.style.display = 'block';
+            } else {
+                document.getElementById('receiptPreviewSection').style.display = 'none';
+            }
+
+            // Construct WhatsApp Message Text
+            let message = `*NEW ORDER RECEIVED (Bank Transfer - Requires Verification)*%0A%0A`;
+            message += `Order ID: ${orderDetails.orderId}%0A`;
+            message += `Customer: ${orderDetails.name}%0A`;
+            message += `Phone: ${orderDetails.phone}%0A`;
+            message += `Total Price: ${orderDetails.totalText}%0A%0A`;
+            message += `*Items Ordered:*%0A`;
+            orderDetails.items.forEach(item => {
+                message += `- ${item.name} (x${item.quantity})%0A`;
+            });
+            message += `%0A*Delivery Address:* ${orderDetails.address}, ${orderDetails.district}, ${orderDetails.province}.`;
+            message += `%0A*Notes:* ${orderDetails.notes || 'None'}`;
+            
+            // WhatsApp Link URL (Using the user's provided number: 0777265683)
+            const storeWhatsappNumber = '94777265683'; 
+            const whatsappLink = `https://wa.me/${storeWhatsappNumber}?text=${message}`;
+
+            whatsappBtn.addEventListener('click', () => {
+                window.open(whatsappLink, '_blank');
+                alert("Order details have been sent to the store's WhatsApp! Please note that the Receipt Image cannot be sent via this link. The store will verify the image on this page or may contact you.");
+                
+                // Clear cart and pending order details after sending the message
+                localStorage.removeItem('shoppingCart');
+                localStorage.removeItem('pendingOrderDetails');
+            });
+            
+        });
+    </script>
+</body>
+</html>

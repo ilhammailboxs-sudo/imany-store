@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Order Details</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🛒 **Mega Store**</a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">📝 Your Order Details</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <div class="card shadow-lg p-4">
+                    <h5 class="card-title mb-4">1. Confirm Your Cart</h5>
+                    <div id="cartSummary" class="alert alert-light border mb-4"></div>
+
+                    <h5 class="card-title mb-4 mt-3">2. Delivery Address & Contact Info</h5>
+                    
+                    <form id="checkoutForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" value="A. Vasanthan" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="0771234567" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Street Address</label>
+                            <textarea class="form-control" id="address" rows="3" required>No. 5, Main Street</textarea>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="province" class="form-label">Province</label>
+                                <select class="form-select" id="province" required>
+                                    <option value="" selected disabled>Select Province</option>
+                                    </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="district" class="form-label">District</label>
+                                <select class="form-select" id="district" required>
+                                    <option value="" selected disabled>Select District</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="notes" class="form-label">Notes / Special Request (Optional)</label>
+                            <textarea class="form-control" id="notes" rows="2" placeholder="Ex: Urgent order"></textarea>
+                        </div>
+
+                        <h5 class="card-title mb-3 mt-4 text-primary">3. Payment & Receipt Upload (Direct Transfer)</h5>
+                        
+                        <div class="alert alert-info border p-3">
+                            <h6>🏦 <b> Transfer/Deposit Details</b></h6>
+                            <p class="mb-1"><b>Bank:</b> Commercial Bank</p>
+                            <p class="mb-1"><b>Account Name:</b> A H M Ilham</p>
+                            <p class="mb-1"><b>Account No:</b> 800-86-80-484</p>
+                            <p class="mb-0 small text-danger"><b>(Please transfer the Total Amount and upload the payment slip/receipt below.)</b></p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="receiptImage" class="form-label">🧾 <b>Payment Receipt Photo Upload</b></label>
+                            <input class="form-control" type="file" id="receiptImage" accept="image/*" required>
+                            <div class="mt-2" id="imagePreviewContainer" style="display: none;">
+                                <p class="mb-1 small text-muted">Uploaded Receipt Preview:</p>
+                                <img id="receiptPreview" src="#" alt="Receipt Preview" class="img-thumbnail" style="max-width: 200px; max-height: 200px; display: none;">
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="placeOrderBtn" class="btn btn-lg btn-success w-100 mt-4">
+                            🛒 <b>PLACE ORDER & SEND TO WHATSAPP</b>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="checkout_logic.js"></script>
+</body>
+</html>
