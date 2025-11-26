@@ -4,7 +4,8 @@ const products = [
     { id: 1, name: "Onthera Cleansing Bar", price: 1500, image: "https://i.postimg.cc/1RjLGfJc/Onthera-Cleansing-Bar.png" },
     { id: 2, name: "Clearing Nut Supplement", price: 2600, image: "img/Inginee_Capsul.jpg" },
     { id: 3, name: "Ingineee Milk", price: 2950, image: "img/Inginee_MIlk.png" },
-     { id: 4, name: "Garcinia Cambodia Supplement", price: 2600, image: "img/Garcinia_Cambodia_Supplement.jpg" },
+    { id: 4, name: "Garcinia Cambodia Supplement", price: 2600, image: "img/Garcinia_Cambodia_Supplement.jpg" },
+    { id: 5, name: "GarliQ Super Booster", price: 3785, image: "img/GarliQ_Super_Booster.jpg" },
 
 ];
 
@@ -108,3 +109,4 @@ clearCartBtn.addEventListener('click', () => {
     }
 
 });
+
