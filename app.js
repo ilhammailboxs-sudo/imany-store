@@ -7,6 +7,7 @@ const products = [
     { id: 4, name: "Garcinia Cambodia Supplement", price: 2600, image: "img/Garcinia_Cambodia_Supplement.jpg" },
     { id: 5, name: "GarliQ Super Booster", price: 3875, image: "img/GarliQ_Super_Booster.jpg" },
     { id: 6, name: "Nut Grass  Supplement", price: 2875, image: "img/Nut_Grass _Supplement.jpg" },
+    { id: 7, name: "Pumpkin Seeds Supplement", price: 4280, image: "img/Pumpkin_Seeds_Supplement.jpg" },
 
 ];
 
@@ -110,6 +111,7 @@ clearCartBtn.addEventListener('click', () => {
     }
 
 });
+
 
 
 
