@@ -6,6 +6,7 @@ const products = [
     { id: 3, name: "Ingineee Milk", price: 2950, image: "img/Inginee_MIlk.png" },
     { id: 4, name: "Garcinia Cambodia Supplement", price: 2600, image: "img/Garcinia_Cambodia_Supplement.jpg" },
     { id: 5, name: "GarliQ Super Booster", price: 3875, image: "img/GarliQ_Super_Booster.jpg" },
+    { id: 6, name: "Nut Grass  Supplement", price: 2875, image: "img/Nut_Grass _Supplement.jpg" },
 
 ];
 
@@ -109,5 +110,6 @@ clearCartBtn.addEventListener('click', () => {
     }
 
 });
+
 
 
